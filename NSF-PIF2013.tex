@@ -3,7 +3,8 @@
 \usepackage{amssymb} %maths
 \usepackage{amsmath} %maths
 \usepackage{graphicx}
-\usepackage{url}
+\usepackage{hyperref}
+
 
 \newcommand{\GeV}{\ensuremath{\mathrm{GeV}}}
 \newcommand{\TeV}{\ensuremath{\mathrm{TeV}}}
@@ -23,106 +24,24 @@
 
 \begin{document}
 
-\title{Exascale Computing at the LHC : Narrative}
-\author{{\bf Principle Investigators} : \\  
-  Reneta Barneva, Matthew Jones, \\ 
-  Steven Ko, Salvatore Rappoccio, Lukasz Ziarek \\ \\ 
-  {\bf Mentors} : Valentin Brimkov, Peter Elmer}
+
+
+\title{Clustering Jets at the Exascale}
+
+% >> Authors
+\author{Steven Ko, Salvatore Rappoccio, Lukasz Ziarek}
+
+% >> Date
+\date{\today}
+
+
+
+
 
 \maketitle
 
-\clearpage
+\section{Project Summary}
 
-\section{Funding Strategy}
-
-This research proposal outlines the necessity to extend the computing
-capacity of the experiments at the Large Hadron Collider (LHC) in
-Geneva, Switzerland, to the exascale of high-throughput
-processing. This is an enormously challenging task, but a necessary
-one to ensure the long-term success of the LHC experiments. 
-
-Exascale computing (in this case, in high throughput)
-is an enormously growth-oriented area. Even during
-lean economic times, the US Federal Government is pledging to support
-this area of research, for instance in the Department of Energy
-Exascale Computing Initiative~\cite{doe_eci}. Indeed, the DOE Office of
-Science quotes :
-\begin{quote}
-The Exascale initiative will be significant and transformative for Department of Energy missions.
-\end{quote}
-The current level of funding for the DOE EIC and related activities is
-\$21M.~\cite{doe_eci_budget}. This ``transformative'' strategy is one
-that is envisioned to continue well into the future. 
-In addition to DOE programs, the
-National Science Foundation (NSF) has several programs to address the
-problems of high-throughput exascale computing~\cite{nsf1,nsf2}.
-
-In addition to governmental programs such as above, private sector
-funding sources are also available, such as the Google Faculty
-Research Awards~\cite{google_fac_awards}, which has an interest in
-exascale computing projects also. 
-
-We plan to apply for these projects in the coming year 2013-2014. 
-
-
-\clearpage
-
-\section{Project Organization}
-
-The principle investigators (PIs) of this proposal have a
-widely-varied and applicable skill set to accomplish the goals of
-extending LHC computing to the exascale. 
-
-\begin{itemize}
-\item Salvatore Rappoccio has 15 years of experience programming in a
-high-energy physics environment, as well as other numerical software
-design for the private sector. He is an expert in critical
-areas of event reconstruction at CMS which can be optimized for
-multicore usage. 
-\item Lukasz Ziarek has 9 years of experience in language, compiler, and runtime design
-targeted at improving multicore performance.  He has worked on 5 compilers and 3 Java VMs. He
-is an expert at speculative and transactional computation focusing on the extraction of
-parallelism and lightweight concurrency.
-\item Steven Ko has 10 years of experience in distributed systems. His recent focus has been large-scale data processing in the cloud using MapReduce and other technologies built on top of it. He also has 5 years of experience in large-scale storage and data management in data centers.
-\item Matthew Jones has more than 12 years experience in scientific software development, 
-with a particular emphasis on parallel programming.
-As the Associate Director of the Center for Computational Research at the University at Buffalo, 
-he has also been responsible for designing 
-and administering high-performance computing facilites for large-scale
-scientific computing.
-\item Reneta Barneva has 29 years of experience as a computer
-  scientist, and is the author of over 50 publications in the subjects
-  of combinatorial image analysis, pattern recognition, and
-  computational geometry. 
-\end{itemize}
-
-There are also two senior mentors to the project to offer guidance,
-insight and technical information. 
-\begin{itemize}
-\item Valentin Brimkov has over 20 years of experience as a
-  mathematician, and has extensive expertise
-  in design and analysis of algorithms, combinatorial optimization,
-  and discrete geometry. 
-\item Peter Elmer is the deputy offline software coordinator of the CMS
-experiment at the LHC. He was responsible for the design and implementation
-of the data and workflow management system used by CMS, as well as its core
-event processing software and software development environment. He has
-made important contributions to the software and computing of several 
-high-energy physics experiments over the past 20 years and is currently
-focused on planning the computing R\&D needed for the next decade in CMS.
-
-\end{itemize}
-
-In addition, the proposal includes funding for
-one graduate student from the CSE department at SUNY Buffalo at 100\%
-FTE, and one graduate student from the Physics Department at SUNY
-Buffalo at 50\% FTE. They will be performing the study of this problem
-under the direction of the PIs, and will also be responsible for
-deployment and scalability of the solution. 
-
-\clearpage
-
-\section{Narrative}
 
 With the discovery of the Higgs boson 
 by the Large Hadron Collider (LHC)
@@ -333,6 +252,39 @@ previous research has explored implementing kNN with
 MapReduce~\cite{knn-mapreduce-0, knn-mapreduce-1}. We intend to explore this
 question in the context of jet clustering for the LHC.
 
+
+
+\section{Prior Work}
+
+The principle investigators (PIs) of this proposal have a
+widely-varied and applicable skill set to accomplish the goals of
+extending LHC computing to the exascale. 
+
+\begin{itemize}
+\item Salvatore Rappoccio has 15 years of experience programming in a
+  high-energy physics environment, as well as other numerical software
+  design for the private sector. He is an expert in jet reconstruction
+  at CMS, maintaining and developing this software for the last five
+  years.
+\item Lukasz Ziarek has 9 years of experience in language, compiler,
+  and runtime design targeted at improving multicore performance.  He
+  has worked on 5 compilers and 3 Java VMs. He is an expert at
+  speculative and transactional computation focusing on the extraction
+  of parallelism and lightweight concurrency. 
+\item Steven Ko has 10 years of experience in distributed systems. His
+  recent focus has been large-scale data processing in the cloud using
+  MapReduce and other technologies built on top of it. He also has 5
+  years of experience in large-scale storage and data management in
+  data centers.
+\end{itemize}
+
+{\bf Need more discussion here.}
+
+
+\section{Outreach and Education}
+
+{\bf Any ideas for outreach?}
+
 \subsection{Summary}
 
 In summary, the problem of expanding LHC computing to the exascale is
@@ -353,6 +305,152 @@ program.
 \bibliographystyle{unsrt}
 \bibliography{NSF-PIF2013}{}
 %\bibliography{auto_generated}
+
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\thepage} {B--\arabic{page}}
+\noindent{\Large \bf BUDGET JUSTIFICATION}
+
+\bigskip
+{\bf Institution : } The State University of New York at Buffalo (UB)
+
+{\bf PI : } Salvatore Rappoccio
+
+
+\bigskip
+{\bf Personnel}
+\bigskip
+
+
+The requested funds of \$XXXXXX USD (for 3 years starting in 2014)
+would cover two (2) months of summer salary for Profs. Ko, Rappoccio,
+and Ziarek per year for three (3) years (\$XXXXXX), the full salary for 
+one (1) computer-science-based postdoctoral fellow for three (3) years
+(\$XXXXX), and salary plus tuition for two (2) graduate students, one
+physics-based and the other computer-science-based, totaling \$XXXXXXX in
+salary and \$XXXXXX in tuition. 
+
+
+\bigskip
+{\bf Travel}
+\bigskip
+
+This research will require moderate travel to CERN for collaboration
+with the {\tt fastjet} authors occasionally. Hence, the proposal requests
+\$15,000 in travel funds for the three years of activity. 
+
+\bigskip
+{\bf Facilities and Administration Indirect Costs}
+\bigskip
+
+The above figures carry an indirect cost
+percentage of 56\%, totaling \$XXXXXX.
+
+
+
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\thepage} {C--\arabic{page}}
+\noindent{\Large \bf Facilities, Equipment and Other Resources}
+
+\bigskip
+{\bf Laboratory Space}
+
+The UB group has two 900 sqft labs, VME/NIM crates,
+several PC's, a Tektronix Logic Analyzer, several scintillator-based
+muon detectors with photo-multiplier tubes, and a machine shop. 
+In addition, the UB group has extensive access to the Silicon
+Detector Laboratory Facility (``SiDet'') at FNAL. 
+
+\bigskip
+{\bf Center For Computational Research}
+
+UB has a large computational research center, CCR, which is a
+Linux-based cluster on the Open Science Grid, and also has a large GPU
+cluster for possible parallel processing developments. 
+
+In addition, there are {\bf BLA BLA BLA BLA BLA} personal computing
+resources, funded by the startup funds of the PI's. 
+
+\bigskip
+{\bf Office}
+
+The faculty, postdoctoral fellows and graduate students will all have
+office space at UB. 
+
+
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\thepage} {D--\arabic{page}}
+\noindent{\Large \bf Postdoctoral Fellow Mentoring}
+
+One postdoctoral fellow will be funded on this project. There are
+extensive postdoctoral fellowship mentoring activities at UB, as well
+as at the LHC 
+Experiments at CERN. These include guidance in career paths,
+work/life balance discussions, and technical skill development such as
+writing grant proposals, etc. Specific elements are highlighted
+below. 
+
+\begin{itemize}
+\item {\bf University at Buffalo (UB)}
+\begin{itemize}
+\item The UB Office of Postdoctoral Scholars offers diverse services
+  for postdoctoral fellows, including the {\sl ``Postdoc Survival
+    Skills Workshops''}, targeted seminars and symposia for
+  postdoctoral fellows, social functions, and logistical assistance. 
+\item The UB Physics Department offers several services to our
+  postdoctoral fellows, including a biweekly Journal Club for particle
+  physics and cosmology, weekly seminars and colloquia, and weekly
+  social functions inside the department. 
+\end{itemize}
+\item {\bf CMS Experiment and CERN}
+\begin{itemize}
+\item As at FNAL, the opportunities for a postdoctoral fellow at CERN
+  and at CMS are extensive. There are also a plethora of workshops,
+  seminars, conferences, etc, at CERN. There are also smaller weekly
+  avenues for networking possibilities, as well as seminars for
+  postdoctoral fellows to gain visibility for their work. 
+\item It is also worth pointing out that, because of the world-class
+  nature of CERN, it often attracts very high-level members of the
+  particle physics community on a regular basis. Such opportunities
+  for visibility among the top-tier scientists in the world (including
+  Nobel and Milner Prize winners, etc) are hard to understate. 
+\end{itemize}
+\end{itemize}
+
+In all, the postdoctoral fellow that will be supported by this
+proposal will have ample opportunities for professional advancement
+and development, as well as a myriad of opportunities for a community
+of peers in both professional and social settings. 
+
+
+
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\thepage} {E--\arabic{page}}
+\noindent{\Large \bf Data Management Plan : Research Data}
+
+The LHC experiments are dedicated to timely dissemination of their data and
+procedures, in addition to documentation of results in publications
+and journal articles. The LHC experiments (including CMS) are world
+leaders in grid computing and cloud-like data storage, and the
+solutions that have been developed have robustly handled the many
+petabytes of data that have been collected. There are several
+``tiers'' of data, which are designated by how widely they are
+deployed throughout the Open Science Grid (OSG) and the other LHC
+sites. 
+
+In addition to these ``tiers'' of the actual data collected, there are
+also software and documentation schema for the LHC data and analysis. 
+The software that will be derived via the activities of this proposal
+will be stored in the {\tt fastjet} central
+repository~\url{http://fastjet.fr}, which is
+open-source, freely-accessible, and well-maintained for the benefit of
+the entire HEP community at large. 
+
+
+
 
 \end{document}
 

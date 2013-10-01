@@ -59,10 +59,9 @@ This is referred to as ``electroweak symmetry breaking''.
 A new phase of particle physics has therefore begun. 
 The questions have shifted from the cause of electroweak symmetry
 breaking, to the study of the Higgs boson and its interactions in
-detail. 
-To understand the larger picture of the fundamental forces in nature,
-the past excellence of the LHC experiments must therefore continue
-unabated in the face of new technical challenges. 
+detail. To understand the larger picture of the fundamental forces in
+nature, the past excellence of the LHC experiments must therefore
+continue unabated in the face of new technical challenges. 
 
 
 One of the major technical challenges that lies ahead is the
@@ -84,6 +83,28 @@ computational time per event! Clearly, it is necessary for the
 computing power to scale in order to compensate for this dramatic
 increase in CPU time with increasing luminosity. 
 
+A critical element in the LHC physics program is the clustering of
+final-state particles produced in collisions into groups called
+``jets''. Jets are produced via quantum chromodynamic (QCD)
+interactions of quarks and gluons that hadronize. 
+
+
+the hadronization of outgoing final-state particles
+from the core interaction of the collision. Due to the asymptotic
+freedom of the QCD interaction, the strong force is effectively very
+weak at higher energies, but grows quickly at lower energies, due to
+the process of ``anti-screening'' of the color charge by gluon
+fields. This results in the phenomenon that the final states of
+colored particles tend to spray in an extended region of space, while
+the centroid of that spray closely approximates the direction of the
+progenitor gluon or quark. Thus, the goal of any ``jet clustering''
+algorithm is to accumulate the final-state particles 
+
+
+These ``jet clustering'' algorithms group the particles 
+This algorithm can become very computationally expensive as the number
+of particles that are produced in a collision grows, scaling as
+$N^2\log{N}$. 
 
 
 However, with the expected end of the historic scaling of single-core
@@ -101,9 +122,8 @@ In terms of their detailed behavior on the CPU many of these codes resemble
 more general enterprise or ``cloud''
 applications~\cite{CLOUDSUITE,GOODACHEP}.
 
-However, there are several numerical algorithms where parallelization
-could be exploited more directly. One of these is the so-called ``jet
-clustering'' algorithms used at CMS, which we now discuss in detail. 
+
+
 %At CMS, this computation is done very often by individuals rather than
 %centrally, and so is accounted for
 %in the 40\% of CPU usage from ``mixed user analysis applications'' as

@@ -29,18 +29,71 @@
 \title{Clustering Jets at the Exascale}
 
 % >> Authors
-\author{Steven Ko, Salvatore Rappoccio, Lukasz Ziarek}
+\author{Mark Adams, Steven Ko, Salvatore Rappoccio, Lukasz Ziarek}
 
 % >> Date
 \date{\today}
 
 
+\abstract{
+
+{\bf Overview :}
+
+In the past, particle physics has relied upon 
+improvements in processing speed of single computing cores
+in order to improve data acquisition rates. This feature will be
+critical to the proposed ``High Luminosity Large Hadron Collider''
+(HLLHC). Unfortunately, since the mid-2000's, this improvement
+in single-core processing speed has hit a limit, and
+improvements in processing time must now come from concurrent
+processing. However, the current reconstruction techniques are not
+enabled for concurrent processing. In order to continue
+improving the processing
+capabilities of particle physics experiments in the HLLHC era, it will
+be necessary to explore cutting-edge techniques in parallel processing. 
+
+There are several general classes of problems in particle physics
+event reconstruction that could be modified in order to
+achieve concurrent processing. One such opportunity that has not yet
+been explored is in ``jet clustering,'' a nearest-neighbor type of
+algorithm used to cluster hadronically-fragmented jets into a single
+object. 
+
+\bigskip
+{\bf Intellectual Merit :}
+
+This proposal focuses on parallelizing the existing jet clustering
+algorithms in use at the LHC experiments. The proposed improvements
+will be to use this as a test case for deployment of cutting-edge
+parallelization techniques such as lightweight concurrency extraction,
+speculative computing, and smarter distribution. Some recent
+experience shows that this nearest-neighbor type of algorithm used by
+the jet clustering is amenable to such improvements. 
+
+\bigskip
+{\bf Broader Impacts :}
+
+The benefits of this proposal are twofold : firstly, there will be an
+immediate improvement of the jet clustering algorithms themselves that
+will lead to higher data acquisition rates at the LHC. Secondly, the
+computing techniques developed could be used in other applications,
+inside of particle physics and elsewhere. Since nearest-neighbor
+algorithms are ubiquitious in scientific computing, it is expected
+that techniques developed to parallelize this particular problem
+will be applicable to a wide variety of others in academia and
+industry. 
+
+In addition, these core developments can train students in the newest
+computing techniques, giving them cutting-edge experience that is
+highly relevant in academia and private industry. 
+
+}
 
 
 
 \maketitle
 
-\section{Project Summary}
+\section{Project Overview}
 
 
 With the discovery of the Higgs boson 

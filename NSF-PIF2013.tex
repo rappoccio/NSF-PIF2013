@@ -29,7 +29,7 @@
 \title{Clustering Jets at the Exascale}
 
 % >> Authors
-\author{Mark Adams, Steven Ko, Salvatore Rappoccio, Lukasz Ziarek}
+\author{Steven Ko, Salvatore Rappoccio, Lukasz Ziarek}
 
 % >> Date
 \date{\today}
@@ -78,7 +78,7 @@ immediate improvement of the jet clustering algorithms themselves that
 will lead to higher data acquisition rates at the LHC. Secondly, the
 computing techniques developed could be used in other applications,
 inside of particle physics and elsewhere. Since nearest-neighbor
-algorithms are ubiquitious in scientific computing, it is expected
+algorithms are ubiquitous in scientific computing, it is expected
 that techniques developed to parallelize this particular problem
 will be applicable to a wide variety of others in academia and
 industry. 
@@ -93,8 +93,15 @@ highly relevant in academia and private industry.
 
 \maketitle
 
-\section{Project Overview}
+\section{Introduction}
 
+The research proposed here will focus on deploying advanced techniques
+in parallelization to improve algorithms involved in particle physics
+research at the Large Hadron Collider (LHC) and beyond. As a
+specific case, this research focuses on one particular algorithm, jet
+clustering, for immediate improvements, although the principles
+developed could be deployed in other areas of particle physics
+reconstruction. 
 
 With the discovery of the Higgs boson 
 by the Large Hadron Collider (LHC)
@@ -128,52 +135,37 @@ seconds per event. However, as the luminosity is
 increased, the computational time currently scales quadratically. As
 the upgraded LHC is expected to deliver $>12\instlumiA$ in the
 upcoming run, the processing time per event is expected to reach
-several minutes per event as shown in
-Figure~\ref{lumitpeSingleMu}. Furthermore, in future runs of the LHC
+several minutes per event. Furthermore, in future runs of the LHC
 in the next 15 years, the luminosity is expected to reach as high as
 $>1\instlumiB$, which would correspond (naively) to several hours of
 computational time per event! Clearly, it is necessary for the
 computing power to scale in order to compensate for this dramatic
 increase in CPU time with increasing luminosity. 
 
-A critical element in the LHC physics program is the clustering of
+Unfortunately, the expected end of the historic scaling of single-core
+processing capability~\cite{GAMEOVER} can adversely affect the
+long-term processing capability for particle physics
+experiments. Without improvements in single-core computational speed,
+the only avenues left are algorithmic improvements, and
+parallellization. Algorithm development is being undertaken at the LHC
+experiments to
+reduce the computational time of the software for data acquisition and
+reconstruction, using both single-core and multi-core
+approaches. However, long-term improvements will require fundamental
+improvements in processing capabilities using parallelization. 
+
+The currently proposed exploratory research will deploy new and
+innovative computer science techniques to particle physics. 
+One algorithm that is particularly amenable to improvement using these
+techniques is the clustering of
 final-state particles produced in collisions into groups called
 ``jets''. Jets are produced via quantum chromodynamic (QCD)
 interactions of quarks and gluons that hadronize. 
-
-
-the hadronization of outgoing final-state particles
-from the core interaction of the collision. Due to the asymptotic
-freedom of the QCD interaction, the strong force is effectively very
-weak at higher energies, but grows quickly at lower energies, due to
-the process of ``anti-screening'' of the color charge by gluon
-fields. This results in the phenomenon that the final states of
-colored particles tend to spray in an extended region of space, while
-the centroid of that spray closely approximates the direction of the
-progenitor gluon or quark. Thus, the goal of any ``jet clustering''
-algorithm is to accumulate the final-state particles 
-
-
 These ``jet clustering'' algorithms group the particles 
 This algorithm can become very computationally expensive as the number
 of particles that are produced in a collision grows, scaling as
-$N^2\log{N}$. 
-
-
-However, with the expected end of the historic scaling of single-core
-processing capability~\cite{GAMEOVER}, it is imperative to utilize a
-parallel processing
-strategy in order to maintain the levels of computational speed that
-are required.
-
-Oftentimes,
-the codes used by CMS (and experimental HEP in general) tend to lack
-clear numerical ``kernels'' where optimization efforts can be focused. 
-Given these characteristics they are generally more properly classified as
-``high throughput computing'' (HTC) rather than ``high performance computing'' (HPC). 
-In terms of their detailed behavior on the CPU many of these codes resemble
-more general enterprise or ``cloud''
-applications~\cite{CLOUDSUITE,GOODACHEP}.
+$N^2\log{N}$. This will serve as a real-world test case for the
+deployment of these algorithms.  
 
 
 
@@ -188,9 +180,82 @@ applications~\cite{CLOUDSUITE,GOODACHEP}.
 %utilizing parallelization in jet clustering in detail. 
 
  
+\section{Prior Work}
 
-\subsection{Jet Clustering} 
 
+\subsection{Results from Prior Support}
+
+Results from prior NSF support : None. 
+
+\subsection{Overview of Activities}
+
+The investigators of this proposal have a
+widely-varied and applicable skill set to accomplish the goals of
+extending LHC computing to the exascale. 
+
+
+
+\bigskip
+\noindent
+{\bf Particle Physics Computing}
+\bigskip
+
+Salvatore Rappoccio (tenure-track Assistant Professor) joined the
+Faculty at the Univers at Buffalo, SUNY (UB) in 2012. He has 15
+years of experience programming in a
+high-energy physics environment, as well as other numerical software
+design for the private sector.
+
+From 2008-2010, he was the co-leader of the Analysis Tools group of
+the CMS Software Project. He was responsible for deployment of jet
+reconstruction algorithms as well as other tools for data analysis of
+LHC collision data during the startup phase of the LHC. His primary
+responsibilities included managing deployment of highly-performing
+software (including visualization) tools in a team consisting of
+$\sim$15 people. He has been instrumental in improving the single-core
+computational speed for jet clustering at CMS since 2008. 
+
+His research interest include utilizing jet clustering algorithms in
+new and innovative ways to search for signals of physics beyond the
+standard model of particle physics. His pioneering efforts resulted in
+the first measurements and searches for new phenomena with advanced jet clustering
+algorithms at CMS, outlined in 
+Refs.~\cite{EXO-11-006,EXO-11-095,SMP-12-019}. These
+techniques have become hugely popular in the LHC experiments and in
+the theoretical community. Prof. Rappoccio is a leader in the jet
+reconstruction community, contributing to and editing seminal reports
+on the subject in Refs.~\cite{boost2010,boost2011,boost2012}. 
+
+In addition to this academic work, he has also been involved in
+numerical software design for MIT's Lincoln Laboratories (the details
+of which are classified). 
+
+
+\bigskip
+\noindent
+{\bf Speculative Computation}
+\bigskip
+
+Lukasz Ziarek has 9 years of experience in language, compiler,
+and runtime design targeted at improving multicore performance.  He
+has worked on 5 compilers and 3 Java VMs. He is an expert at
+speculative and transactional computation focusing on the extraction
+of parallelism and lightweight concurrency. 
+
+
+\bigskip
+\noindent
+{\bf  Lightweight Concurrency for Latency Masking}
+\bigskip
+
+Steven Ko has 10 years of experience in distributed systems. His
+recent focus has been large-scale data processing in the cloud using
+MapReduce and other technologies built on top of it. He also has 5
+years of experience in large-scale storage and data management in
+data centers.
+
+
+\section{Proposed Program of Research}
 
 
 
@@ -209,29 +274,29 @@ jet clustering
 is outlined in Ref.~\cite{fastjet_timing}. In a single core,
 the computational time scales as $O(N^2)$ or  $O(N \ln{N})$, where $N$
 is the number of inputs to the algorithm, which scales linearly with
-luminosity. 
+luminosity. Since the luminosity of future colliders is expected to
+drastically increase over existing machines, it will be critical to
+develop parallelization strategies to maintain scalability of the jet
+clustering algorithms that exist to future machines. 
 
+We now
+discuss specific strategies that can be developed 
+to optimize performance in this algorithm. 
+
+
+\iffalse
 There is existing work and literature on the topic of the
-parallelization of the kNN algorithm, for instance, in
+parallelization of similar kNN algorithms, for instance, in
 Refs.~\cite{knn_gpu_1, knn_gpu_2, knn_gpu_3}, where improvements
 $O(100)$ in CPU performance are observed over standard
 algorithms. Since the proposed use case is
 very similar to the kNN algorithm, similar improvements to the
 processing time by parallelization strategies are expected. 
-
-We now discuss specific strategies that can be developed 
-to optimize performance in this algorithm. 
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=100mm]{lumitpeSingleMu-fitted2.png}
-    \caption{\label{lumitpeSingleMu} Event processing time versus
-      instantaneous luminosity.}
-\end{figure}
+\fi
 
 
 
-\subsection{Full Stack Parallelization}
+\subsection{Technical Challenges}
 
 To achieve the necessary improvements in performance required for scalability
 of jet clustering, we propose to examine parallelization opportunities across
@@ -321,43 +386,189 @@ redistributes the job if some machine fails.
 Due to this simplicity and power, it is quickly gaining popularity in industry
 for large-scale data processing. Many applications in scientific computing have not
 yet explored the use of MapReduce in depth, however
-previous research has explored implementing kNN with
+previous research has explored implementing similar kNN-style
+algorithms with
 MapReduce~\cite{knn-mapreduce-0, knn-mapreduce-1}. We intend to explore this
 question in the context of jet clustering for the LHC.
 
 
-
-\section{Prior Work}
-
-The principle investigators (PIs) of this proposal have a
-widely-varied and applicable skill set to accomplish the goals of
-extending LHC computing to the exascale. 
-
-\begin{itemize}
-\item Salvatore Rappoccio has 15 years of experience programming in a
-  high-energy physics environment, as well as other numerical software
-  design for the private sector. He is an expert in jet reconstruction
-  at CMS, maintaining and developing this software for the last five
-  years.
-\item Lukasz Ziarek has 9 years of experience in language, compiler,
-  and runtime design targeted at improving multicore performance.  He
-  has worked on 5 compilers and 3 Java VMs. He is an expert at
-  speculative and transactional computation focusing on the extraction
-  of parallelism and lightweight concurrency. 
-\item Steven Ko has 10 years of experience in distributed systems. His
-  recent focus has been large-scale data processing in the cloud using
-  MapReduce and other technologies built on top of it. He also has 5
-  years of experience in large-scale storage and data management in
-  data centers.
-\end{itemize}
-
-{\bf Need more discussion here.}
-
-
 \section{Outreach and Education}
 
-{\bf Any ideas for outreach?}
+While it is critical to pursue a rigorous research program, a large
+part of the responsibility of scientists is to educate the next
+generation effectively. There is already extensive work being done to
+educate high school-level students and teachers via the {\em QuarkNet}
+program  at UB, however there is
+very little in the way of educating the general
+public. 
+In addition to participating in the existing {\em QuarkNet}
+activities, the plan outlined in this proposal will extend the coverage of the
+outreach program at UB to engage the broader
+public in discussions of major results in particle
+physics, as well as to enliven particle physics for young students. 
+This will be implemented based on similar events as the
+``HiggsFest''~\cite{higgsfest} that Prof. Rappoccio organized at UB. 
 
+
+\subsection{Higgsfest and other public events}
+
+The ``Higgsfest'' that was organized here at UB in 2012
+is highlighted in Ref.~\cite{higgsfest}. The aim of the event was to
+invite the general public for ``plain English'' summaries and hands-on
+demonstrations that were geared for a multitude of age and knowledge
+levels. 
+This was attended by over 100 people, including children,
+high-school students, physics and non-physics undergraduates, and
+interested members of the community. 
+
+Some of the hands-on demonstrations included building models of
+Feynman diagrams from craft material (for young children), a
+fully-functional four-layer coincidental muon scintillator detector,
+a cloud chamber made out of tupperware, felt, and dry ice, and the
+actual Higgs events from the CMS collaboration in an interactive event
+display. 
+The event was covered by the ``UB Reporter'' here at
+UB~\cite{higgsfest_ubreporter}. 
+
+Two more such events are proposed, the first to coincide with the LHC
+turn-on sometime in 2015, and the second to coincide with the newest
+results from the LHC after data-taking commences. These are 
+events that should generate high media coverage, and will be a good
+opportunity to capitalize on public interest in this field. Having
+regular events to discuss the LHC results is a very long-term goal,
+and the opportunity to develop them with the CAREER proposal
+will be very useful. In the event of a major new discovery at the LHC
+during Run 2, the public interest will be very high, so having the
+experience of what works and what does not work in such events is
+extremely valuable to maximize the public impact. 
+
+In addition, this removes the stigma associated with science and
+technology fields at an early age. When young children can attend an
+event with their parents and take something away from it, this shows
+them that science is an integral part of life, and nothing to be
+particularly nervous about pursuing. It may even convince younger
+people to pursue a scientific career. 
+
+One of the major points learned during the last ``Higgsfest''
+is that it is often difficult to have economically-disadvantaged
+students attend the lectures because of a lack of transportation
+possibilities. This is something to rectify for future
+projects along these lines. Therefore, in addition to holding the
+event directly
+at the UB North Campus (which is difficult for inner-city
+Buffalo schools to reach), a duplicated event is also proposed
+closer to the inner city that is easier to attend, or possibly to
+visit these schools directly. Some possible
+locations are the UB South Campus, or at
+``Babeville''~\cite{babeville}, where the UB Physics
+Department routinely organizes the ``Science and Art
+Cabaret''~\cite{cabaret}. Both locations 
+provide the infrastructure needed for the event, and
+access for disadvantaged schools and students in the inner city of
+Buffalo. 
+
+
+%In addition, I have also participated in the Buffalo
+%area's ``Science Cabaret''~\cite{cabaret} which intends to discuss
+%science and art in a very informal and relaxed setting. 
+
+
+
+\subsection{Undergraduate research}
+
+Having been an undergraduate researcher, Prof. Rappoccio knows the importance
+of making a positive impression on undergraduates who are interested
+in pursuing an academic career. 
+He is currently advising two undergraduate students in his group,
+Brendan Smith and Jonathan Goodrum. Mr. Goodrum is participating in the
+``Collegiate Science and Technology Entry Program'' (CSTEP) here at
+UB. This program focuses on disadvantaged or minority
+students who would otherwise have a difficult time pursuing
+STEM-related fields. Prof. Rappoccio is a strong believer in the principles and
+practice of this program, and intends to continue this work in the
+future. Currently, Mr. Goodrum is participating in a study to increase
+the processing speed of jet-clustering algorithms (critical for the
+jet substructure outlined above) by investigating possible
+parallelization of the algorithms for multicore, multithread, and
+possibly graphical processing unit usage. 
+
+In addition, Mr. Smith obtained a complete hands-on immersion at the
+Fermi National Accelerator Laboratory (FNAL) during the summer of
+2013. There, he participated in testing of major electronics
+modules for the forward pixel (FPIX) upgrade at CMS. This kind of
+experience is invaluable in the field of young researchers, and it is also
+planned to continue supporting undergraduate students in such hands-on
+activities at CERN next year under the NSF Cooperative Agreement that is
+under review at the present time, discussed in the ``Current and
+Pending Support'' section below (Proposal Number 7334626). 
+Mr. Smith is also currently completing an undergraduate honor's thesis
+under the direction of Prof. Rappoccio. 
+
+\section{Prior Work in Education and Outreach}
+
+As Prof. Rappoccio wholeheartedly believes in the importance of outreach and
+educational activity, he has extensively participated in outreach
+activities throughout his career. Some examples are
+
+\begin{itemize}
+\item {\bf Facilitator, CMS Data Analysis School, Fermilab, Batavia IL
+  (Jan 2013, Jan 2011)} : facilitated the education of new CMS members
+through tutorials and hands-on exercises of real-life
+measurements. 
+\item {\bf ``Higgsfest'' public lecture, Buffalo NY (Dec 6 2012)}: as
+  described above, the ``Higgsfest'' was a celebration of the
+  discovery of the SM-like Higgs boson at the LHC focused on outreach
+  to the community. 
+\item {\bf Science Cabaret public lecture, Buffalo NY (Oct 17 2012)}:
+  lecture about the statistics behind the discovery of the Higgs boson
+  aimed at conveying the information to a group of members of the
+  artistic and public communities in Buffalo. 
+\item {\bf Fermilab UEC Trip to Washington, D.C. (Spring 2009, Spring
+    2011)} : advocacy trip to visit members of Congress to
+  spread information related to particle physics. 
+\item {\bf Angels and Demons public lecture, Bethlehem Public Library,
+    Delmar NY (May 15 2009)} : related to the release of the film
+  ``Angels and Demons,'' a large-scale public lecture series was
+  organized by the Fermilab outreach department, and Prof. Rappoccio gave the
+  lecture at a library outside of Albany, NY. 
+\item {\bf Chicago Section of the Society for Applied Spectroscopy,
+    Elmhurst, IL (Jan 13 2009)} : lecture of the methodologies and
+  results of collider physics to an engineering society in the Chicago
+  Area. 
+\item {\bf Lecture, Bethlehem Central High School,
+    Delmar NY (Dec 4 2008)} : lecture to high-school students from the
+  high school I graduated from about particle physics and the LHC. 
+\item {\bf Duckon Science Fiction Convention, Naperville IL (Jun 14
+    2008)} : lecture about the ``real'' science of the LHC compared to
+  science fiction. 
+\item {\bf Starter Kit for LHC Newcomers and Physics Analysis Toolkit
+    Tutorials, Fermilab, Batavia IL, also CERN, Geneva CH (throughout
+    2008-2009)} : as part of his duties for the LHC support team at
+  Fermilab, Prof. Rappoccio developed an education program for students,
+  postdoctoral fellows, and faculty that were new to the CMS
+  experiment with hands-on examples, simple walk-through tutorials,
+  and in-person support. This eventually developed into full-fledged
+  activities at CERN for the tutorials, as well as was the precursor
+  for the hugely successful ``CMS Data Analysis School,'' as much of
+  the material was initially developed there. 
+\item Prof. Rappoccio currently oversees the research and education of {\bf Joshua
+    Kaisen} and {\bf Maral Alyari} as graduate students in his
+  group. Mr. Kaisen is working on upgrading the particle-flow
+  algorithm to work in the upgraded CMS detector. {\bf Ms. Alyari}
+  will be working on data-quality monitoring of the particle-flow and
+  jet-reconstruction algorithms.
+\item Previously, at JHU, Prof. Rappoccio also oversaw the graduate studies of 
+  {\bf Guofan Hu, Marc Osherson, Kevin Nash, and Yongjie Xin} who are
+  working on searches for BSM physics using boosted jet
+  algorithms. Dr. Hu graduated recently and moved to a position in
+  finance, while Mr. Osherson, Mr. Nash, and Mr. Xin are continuing
+  their studies, still partially under his supervision. 
+\item Prior to the monitoring of the activities of {\bf Brendan Smith} and 
+  {\bf Jonathan Goodrum}, at JHU Prof. Rappoccio monitored the activities of two
+  undergraduate students, 
+  {\bf David Bjergaard} and {\bf Prateek Bajaj}. Mr. Bjergaard is now
+  at Duke University pursuing a Ph.D. in particle physics. 
+\end{itemize}
 \subsection{Summary}
 
 In summary, the problem of expanding LHC computing to the exascale is
@@ -375,6 +586,13 @@ expected to attain considerable improvements in this area, which
 are absolutely critical to the success of the future LHC physics
 program. 
 
+
+
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\thepage} {A--\arabic{page}}
+
+
 \bibliographystyle{unsrt}
 \bibliography{NSF-PIF2013}{}
 %\bibliography{auto_generated}
@@ -389,35 +607,55 @@ program.
 
 {\bf PI : } Salvatore Rappoccio
 
+{\bf Co-I : } Lukasz Ziarek, Steven Ko
+
 
 \bigskip
 {\bf Personnel}
 \bigskip
 
 
-The requested funds of \$XXXXXX USD (for 3 years starting in 2014)
-would cover two (2) months of summer salary for Profs. Ko, Rappoccio,
-and Ziarek per year for three (3) years (\$XXXXXX), the full salary for 
-one (1) computer-science-based postdoctoral fellow for three (3) years
-(\$XXXXX), and salary plus tuition for two (2) graduate students, one
-physics-based and the other computer-science-based, totaling \$XXXXXXX in
-salary and \$XXXXXX in tuition. 
+The requested funds of \$915,569 USD (for 3 years starting in 2014)
+would cover two (2) months of summer salary for Profs. Rappoccio,
+Ziarek and Ko per
+year for three (3) years
+(\$172,062), the full salary for 
+one (1) postdoctoral fellow for three (3)
+years (\$154,224), and salary plus
+tuition for two (2) graduate students, totaling \$91,812 in
+salary and \$33,432 in tuition. 
+
+If awarded, efforts for Profs. Rappoccio, Ziarek and Ko will be
+reduced to be in compliance with NSF 2 month policy. 
+
+\bigskip
+{\bf Fringe}
+\bigskip
+
+
+Fringe benefit rates are based on the applicable federally negotiated rates published at
+\\
+http://www.research.buffalo.edu/sps/about/rates.cfm.
 
 
 \bigskip
 {\bf Travel}
 \bigskip
 
-This research will require moderate travel to CERN for collaboration
-with the {\tt fastjet} authors occasionally. Hence, the proposal requests
-\$15,000 in travel funds for the three years of activity. 
+This research will require regular travel to conferences and
+CERN. Hence, the proposal requests
+\$12,486 in travel funds for the three years of activity. 
 
 \bigskip
 {\bf Facilities and Administration Indirect Costs}
 \bigskip
 
-The above figures carry an indirect cost
-percentage of 56\%, totaling \$XXXXXX.
+Indirect cost rates are based on the applicable federally negotiated
+rates published at 
+\\
+http://www.research.buffalo.edu/sps/about/rates.cfm
+
+
 
 
 
@@ -426,14 +664,6 @@ percentage of 56\%, totaling \$XXXXXX.
 \renewcommand{\thepage} {C--\arabic{page}}
 \noindent{\Large \bf Facilities, Equipment and Other Resources}
 
-\bigskip
-{\bf Laboratory Space}
-
-The UB group has two 900 sqft labs, VME/NIM crates,
-several PC's, a Tektronix Logic Analyzer, several scintillator-based
-muon detectors with photo-multiplier tubes, and a machine shop. 
-In addition, the UB group has extensive access to the Silicon
-Detector Laboratory Facility (``SiDet'') at FNAL. 
 
 \bigskip
 {\bf Center For Computational Research}
@@ -442,13 +672,10 @@ UB has a large computational research center, CCR, which is a
 Linux-based cluster on the Open Science Grid, and also has a large GPU
 cluster for possible parallel processing developments. 
 
-In addition, there are {\bf BLA BLA BLA BLA BLA} personal computing
-resources, funded by the startup funds of the PI's. 
-
 \bigskip
 {\bf Office}
 
-The faculty, postdoctoral fellows and graduate students will all have
+The faculty, postdoctoral fellows and graduate students all have
 office space at UB. 
 
 
@@ -459,8 +686,8 @@ office space at UB.
 
 One postdoctoral fellow will be funded on this project. There are
 extensive postdoctoral fellowship mentoring activities at UB, as well
-as at the LHC 
-Experiments at CERN. These include guidance in career paths,
+as via the CMS
+Experiment at CERN. These include guidance in career paths,
 work/life balance discussions, and technical skill development such as
 writing grant proposals, etc. Specific elements are highlighted
 below. 
@@ -477,10 +704,10 @@ below.
   physics and cosmology, weekly seminars and colloquia, and weekly
   social functions inside the department. 
 \end{itemize}
-\item {\bf CMS Experiment and CERN}
+\item {\bf CERN}
 \begin{itemize}
-\item As at FNAL, the opportunities for a postdoctoral fellow at CERN
-  and at CMS are extensive. There are also a plethora of workshops,
+\item The opportunities for a postdoctoral fellow at CERN
+  are extensive. There are also a plethora of workshops,
   seminars, conferences, etc, at CERN. There are also smaller weekly
   avenues for networking possibilities, as well as seminars for
   postdoctoral fellows to gain visibility for their work. 
@@ -502,25 +729,13 @@ of peers in both professional and social settings.
 \newpage
 \pagenumbering{arabic}
 \renewcommand{\thepage} {E--\arabic{page}}
-\noindent{\Large \bf Data Management Plan : Research Data}
+\noindent{\Large \bf Data Management Plan }
 
-The LHC experiments are dedicated to timely dissemination of their data and
-procedures, in addition to documentation of results in publications
-and journal articles. The LHC experiments (including CMS) are world
-leaders in grid computing and cloud-like data storage, and the
-solutions that have been developed have robustly handled the many
-petabytes of data that have been collected. There are several
-``tiers'' of data, which are designated by how widely they are
-deployed throughout the Open Science Grid (OSG) and the other LHC
-sites. 
+The algorithms that are developed with this research plan will be
+integrated into the main {\tt fastjet} software framework for
+distribution among collaborators (both experimental and theoretical)
+worldwide~\footnote{http://fastjet.fr}. 
 
-In addition to these ``tiers'' of the actual data collected, there are
-also software and documentation schema for the LHC data and analysis. 
-The software that will be derived via the activities of this proposal
-will be stored in the {\tt fastjet} central
-repository~\url{http://fastjet.fr}, which is
-open-source, freely-accessible, and well-maintained for the benefit of
-the entire HEP community at large. 
 
 
 

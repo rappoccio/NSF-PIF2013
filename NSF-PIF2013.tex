@@ -224,7 +224,11 @@ Refs.~\cite{EXO-11-006,EXO-11-095,SMP-12-019}. These
 techniques have become hugely popular in the LHC experiments and in
 the theoretical community. Prof. Rappoccio is a leader in the jet
 reconstruction community, contributing to and editing seminal reports
-on the subject in Refs.~\cite{boost2010,boost2011,boost2012}. 
+on the subject in Refs.~\cite{boost2010,boost2011,boost2012}.
+
+Currently, Rappoccio is mentoring two students (one graduate student
+and one undergraduate student) in achieving parallelization of the jet
+clustering algorithms.  
 
 In addition to this academic work, he has also been involved in
 numerical software design for MIT's Lincoln Laboratories (the details
@@ -278,6 +282,16 @@ luminosity. Since the luminosity of future colliders is expected to
 drastically increase over existing machines, it will be critical to
 develop parallelization strategies to maintain scalability of the jet
 clustering algorithms that exist to future machines. 
+
+The postdoctoral fellow requested in this proposal is envisioned to
+have a computer science background. There will be two graduate
+students, one with a physics background (but with strong computational
+skills), and one with a computer science background. This team, under
+the guidance of Rappoccio, Ziarek and Ko, will perform the
+implementation and study of these algorithms in the real-world 
+{\tt fastjet} software environment, testing the improvements at the
+extensive cluster at the {\bf Center for Computational Research} here
+at UB. 
 
 We now
 discuss specific strategies that can be developed 
@@ -392,6 +406,17 @@ MapReduce~\cite{knn-mapreduce-0, knn-mapreduce-1}. We intend to explore this
 question in the context of jet clustering for the LHC.
 
 
+\section{Broader impacts}
+
+The broader impacts of this reasearch are manifold. The jet-clustering
+algorithm is very similar to the ``kNN'' algorithm, which is widely
+applicable throughout research and industry. The improvements that are
+developed here at the cutting edge of scientific inquiry will be easily
+adaptable to other real-life applications. 
+
+{\bf need more here... other CS applications???}. 
+
+
 \section{Outreach and Education}
 
 While it is critical to pursue a rigorous research program, a large
@@ -479,30 +504,14 @@ Buffalo.
 Having been an undergraduate researcher, Prof. Rappoccio knows the importance
 of making a positive impression on undergraduates who are interested
 in pursuing an academic career. 
-He is currently advising two undergraduate students in his group,
-Brendan Smith and Jonathan Goodrum. Mr. Goodrum is participating in the
+He is currently advising one undergraduate students in his group,
+Jonathan Goodrum. Mr. Goodrum is participating in the
 ``Collegiate Science and Technology Entry Program'' (CSTEP) here at
 UB. This program focuses on disadvantaged or minority
 students who would otherwise have a difficult time pursuing
 STEM-related fields. Prof. Rappoccio is a strong believer in the principles and
 practice of this program, and intends to continue this work in the
-future. Currently, Mr. Goodrum is participating in a study to increase
-the processing speed of jet-clustering algorithms (critical for the
-jet substructure outlined above) by investigating possible
-parallelization of the algorithms for multicore, multithread, and
-possibly graphical processing unit usage. 
-
-In addition, Mr. Smith obtained a complete hands-on immersion at the
-Fermi National Accelerator Laboratory (FNAL) during the summer of
-2013. There, he participated in testing of major electronics
-modules for the forward pixel (FPIX) upgrade at CMS. This kind of
-experience is invaluable in the field of young researchers, and it is also
-planned to continue supporting undergraduate students in such hands-on
-activities at CERN next year under the NSF Cooperative Agreement that is
-under review at the present time, discussed in the ``Current and
-Pending Support'' section below (Proposal Number 7334626). 
-Mr. Smith is also currently completing an undergraduate honor's thesis
-under the direction of Prof. Rappoccio. 
+future. 
 
 \section{Prior Work in Education and Outreach}
 
@@ -569,6 +578,9 @@ measurements.
   {\bf David Bjergaard} and {\bf Prateek Bajaj}. Mr. Bjergaard is now
   at Duke University pursuing a Ph.D. in particle physics. 
 \end{itemize}
+
+
+
 \subsection{Summary}
 
 In summary, the problem of expanding LHC computing to the exascale is

@@ -43,13 +43,15 @@ In the past, particle physics has relied upon
 improvements in processing speed of single computing cores
 in order to improve data acquisition rates. This feature will be
 critical to the proposed ``High Luminosity Large Hadron Collider''
-(HLLHC). Unfortunately, since the mid-2000's, this improvement
+(HL-LHC) and other colliders, where the computational challenges move
+from the petascale to the exascale. Unfortunately, since the mid-2000's,
+this improvement
 in single-core processing speed has hit a limit, and
 improvements in processing time must now come from concurrent
 processing. However, the current reconstruction techniques are not
 enabled for concurrent processing. In order to continue
 improving the processing
-capabilities of particle physics experiments in the HLLHC era, it will
+capabilities of particle physics experiments in the HL-LHC era, it will
 be necessary to explore cutting-edge techniques in parallel processing. 
 
 There are several general classes of problems in particle physics
@@ -67,7 +69,7 @@ algorithms in use at the LHC experiments. The proposed improvements
 will be to use this as a test case for deployment of cutting-edge
 parallelization techniques such as lightweight concurrency extraction,
 speculative computing, and smarter distribution. Some recent
-experience shows that this nearest-neighbor type of algorithm used by
+experience shows that the nearest-neighbor type of algorithm used by
 the jet clustering is amenable to such improvements. 
 
 \bigskip
@@ -98,10 +100,11 @@ highly relevant in academia and private industry.
 The research proposed here will focus on deploying advanced techniques
 in parallelization to improve algorithms involved in particle physics
 research at the Large Hadron Collider (LHC) and beyond. As a
-specific case, this research focuses on one particular algorithm, jet
-clustering, for immediate improvements, although the principles
+specific test case, this research focuses on immediate improvements to
+one particular algorithm, jet
+clustering, although the principles
 developed could be deployed in other areas of particle physics
-reconstruction. 
+reconstruction and elsewhere. 
 
 With the discovery of the Higgs boson 
 by the Large Hadron Collider (LHC)
@@ -120,11 +123,13 @@ A new phase of particle physics has therefore begun.
 The questions have shifted from the cause of electroweak symmetry
 breaking, to the study of the Higgs boson and its interactions in
 detail. To understand the larger picture of the fundamental forces in
-nature, the past excellence of the LHC experiments must therefore
-continue unabated in the face of new technical challenges. 
+nature, it will be imperative that high-luminosity colliders be built
+to study the Higgs in detail, requiring exascale computing tools (in
+speed and throughput) to reach the goals. 
 
 
-One of the major technical challenges that lies ahead is the
+One of the major technical challenges that lies ahead in
+exascale-level computng for these high-luminosity colliders is the
 continuation of the scaling of computational power year by year, known
 colloquially as ``Moore's Law''. 
 To set the scale, at the CMS experiment
@@ -132,13 +137,11 @@ with the LHC collision flux (``luminosity'') reaching
 $7\instlumiA$, the processing
 time to reconstruct each collision event by CMS was approximately 20
 seconds per event. However, as the luminosity is
-increased, the computational time currently scales quadratically. As
-the upgraded LHC is expected to deliver $>12\instlumiA$ in the
-upcoming run, the processing time per event is expected to reach
-several minutes per event. Furthermore, in future runs of the LHC
-in the next 15 years, the luminosity is expected to reach as high as
-$>1\instlumiB$, which would correspond (naively) to several hours of
-computational time per event! Clearly, it is necessary for the
+increased, the computational time currently scales
+quadratically. The luminosity at the HL-LHC is expected to reach as
+high as $>1\instlumiB$, which would correspond (naively) to enormous
+processing times, of order of many minutes to several
+hours per event! Clearly, it is necessary for the
 computing power to scale in order to compensate for this dramatic
 increase in CPU time with increasing luminosity. 
 
@@ -161,11 +164,16 @@ techniques is the clustering of
 final-state particles produced in collisions into groups called
 ``jets''. Jets are produced via quantum chromodynamic (QCD)
 interactions of quarks and gluons that hadronize. 
-These ``jet clustering'' algorithms group the particles 
+These ``jet clustering'' algorithms group the particles into jets
+based on nearest-neighbor clustering (NN). 
 This algorithm can become very computationally expensive as the number
 of particles that are produced in a collision grows, scaling as
-$N^2\log{N}$. This will serve as a real-world test case for the
-deployment of these algorithms.  
+$N^2\log{N}$ or $N\log{N}$. Techniques such as speculative computing,
+lightweight concurrency, and smarter distribution can strongly impact
+these types of NN algorithms~\cite{knn_gpu_1,knn_gpu_2,knn_gpu_3,knn-mapreduce-0,knn-mapreduce-1}. 
+Thus, this research will serve as a real-world test case
+for the deployment of these algorithms, with both immediate and
+long-term benefits. 
 
 
 
@@ -195,10 +203,10 @@ extending LHC computing to the exascale.
 
 
 
-\bigskip
-\noindent
-{\bf Particle Physics Computing}
-\bigskip
+%\bigskip
+%\noindent
+%{\bf Particle Physics Computing}
+%\bigskip
 
 Salvatore Rappoccio (tenure-track Assistant Professor) joined the
 Faculty at the Univers at Buffalo, SUNY (UB) in 2012. He has 15
@@ -206,6 +214,8 @@ years of experience programming in a
 high-energy physics environment, as well as other numerical software
 design for the private sector.
 
+Since 2007, Rappoccio has been a member of the Compact Muon Solenoid
+(CMS) experiment at CERN. 
 From 2008-2010, he was the co-leader of the Analysis Tools group of
 the CMS Software Project. He was responsible for deployment of jet
 reconstruction algorithms as well as other tools for data analysis of
@@ -215,7 +225,7 @@ software (including visualization) tools in a team consisting of
 $\sim$15 people. He has been instrumental in improving the single-core
 computational speed for jet clustering at CMS since 2008. 
 
-His research interest include utilizing jet clustering algorithms in
+His research interests include utilizing jet clustering algorithms in
 new and innovative ways to search for signals of physics beyond the
 standard model of particle physics. His pioneering efforts resulted in
 the first measurements and searches for new phenomena with advanced jet clustering
@@ -235,10 +245,10 @@ numerical software design for MIT's Lincoln Laboratories (the details
 of which are classified). 
 
 
-\bigskip
-\noindent
-{\bf Speculative Computation}
-\bigskip
+%\bigskip
+%\noindent
+%{\bf Speculative Computation}
+%\bigskip
 
 Lukasz Ziarek has 9 years of experience in language, compiler,
 and runtime design targeted at improving multicore performance.  He
@@ -247,10 +257,10 @@ speculative and transactional computation focusing on the extraction
 of parallelism and lightweight concurrency. 
 
 
-\bigskip
-\noindent
-{\bf  Lightweight Concurrency for Latency Masking}
-\bigskip
+%\bigskip
+%\noindent
+%{\bf  Lightweight Concurrency for Latency Masking}
+%\bigskip
 
 Steven Ko has 10 years of experience in distributed systems. His
 recent focus has been large-scale data processing in the cloud using
@@ -262,13 +272,9 @@ data centers.
 \section{Proposed Program of Research}
 
 
-
-The energetic deposits of particles in detectors need to be clustered
-to obtain the
-complete response. This is because the process
-inherently involves a shower of particles called a ``jet''. This
-``jet clustering'' is a well-established technique employed at
-many different particle physics experiments worldwide, and is
+The
+``jet clustering'' technique is employed by
+many different particle physics experiments and theorists worldwide, and is
 implemented in a common software framework called 
 {\tt fastjet}~\cite{fastjet_manual}. 
 The mathematical problem is analogous to the
@@ -283,15 +289,6 @@ drastically increase over existing machines, it will be critical to
 develop parallelization strategies to maintain scalability of the jet
 clustering algorithms that exist to future machines. 
 
-The postdoctoral fellow requested in this proposal is envisioned to
-have a computer science background. There will be two graduate
-students, one with a physics background (but with strong computational
-skills), and one with a computer science background. This team, under
-the guidance of Rappoccio, Ziarek and Ko, will perform the
-implementation and study of these algorithms in the real-world 
-{\tt fastjet} software environment, testing the improvements at the
-extensive cluster at the {\bf Center for Computational Research} here
-at UB. 
 
 We now
 discuss specific strategies that can be developed 
@@ -340,7 +337,7 @@ the results of other computations. Since the creation of threads and associated
 schedule and synchronization costs are typically prohibitive, we will explore new
 threading models that allow for logically-distinct computations to execute within
 a given construct. The PIs previous research has indicated that such schemes can profitably
-boost overall performance in the context of ML code~\cite{acml, parasites}. 
+boost overall performance in the context of ML ( {\bf From Sal : Define this!} )code~\cite{acml, parasites}. 
 %The salient research
 %challenges in applying this strategy are as follows:  1) identifying what computation can be executed
 %safely during high latency operations at compile time, 2) providing a lightweight threading runtime
@@ -406,12 +403,32 @@ MapReduce~\cite{knn-mapreduce-0, knn-mapreduce-1}. We intend to explore this
 question in the context of jet clustering for the LHC.
 
 
+
+\bigskip
+\noindent
+{\bf Expected Improvements}
+\bigskip
+
+The postdoctoral fellow requested in this proposal is envisioned to
+have a computer science background. There will be two graduate
+students, one with a physics background (but with strong computational
+skills), and one with a computer science background. This team, under
+the guidance of Rappoccio, Ziarek and Ko, will perform the
+implementation and study of these algorithms in the real-world 
+{\tt fastjet} software environment, testing the improvements at the
+extensive cluster at the {\bf Center for Computational Research} here
+at UB. 
+
+{\bf NEED EXPECTED IMPROVEMENTS HERE.}
+
+
+
 \section{Broader impacts}
 
 The broader impacts of this reasearch are manifold. The jet-clustering
 algorithm is very similar to the ``kNN'' algorithm, which is widely
 applicable throughout research and industry. The improvements that are
-developed here at the cutting edge of scientific inquiry will be easily
+developed here at the cutting edge of scientific inquiry will possibly be
 adaptable to other real-life applications. 
 
 {\bf need more here... other CS applications???}. 
@@ -422,7 +439,8 @@ adaptable to other real-life applications.
 While it is critical to pursue a rigorous research program, a large
 part of the responsibility of scientists is to educate the next
 generation effectively. There is already extensive work being done to
-educate high school-level students and teachers via the {\em QuarkNet}
+educate high school-level students and teachers about particle physics
+via the {\em QuarkNet}
 program  at UB, however there is
 very little in the way of educating the general
 public. 
@@ -459,10 +477,8 @@ Two more such events are proposed, the first to coincide with the LHC
 turn-on sometime in 2015, and the second to coincide with the newest
 results from the LHC after data-taking commences. These are 
 events that should generate high media coverage, and will be a good
-opportunity to capitalize on public interest in this field. Having
-regular events to discuss the LHC results is a very long-term goal,
-and the opportunity to develop them with the CAREER proposal
-will be very useful. In the event of a major new discovery at the LHC
+opportunity to capitalize on public interest in this field.
+In the event of a major new discovery at the LHC
 during Run 2, the public interest will be very high, so having the
 experience of what works and what does not work in such events is
 extremely valuable to maximize the public impact. 
@@ -504,7 +520,7 @@ Buffalo.
 Having been an undergraduate researcher, Prof. Rappoccio knows the importance
 of making a positive impression on undergraduates who are interested
 in pursuing an academic career. 
-He is currently advising one undergraduate students in his group,
+He is currently advising one undergraduate student in his group,
 Jonathan Goodrum. Mr. Goodrum is participating in the
 ``Collegiate Science and Technology Entry Program'' (CSTEP) here at
 UB. This program focuses on disadvantaged or minority
@@ -512,6 +528,7 @@ students who would otherwise have a difficult time pursuing
 STEM-related fields. Prof. Rappoccio is a strong believer in the principles and
 practice of this program, and intends to continue this work in the
 future. 
+
 
 \section{Prior Work in Education and Outreach}
 
@@ -560,19 +577,17 @@ measurements.
   activities at CERN for the tutorials, as well as was the precursor
   for the hugely successful ``CMS Data Analysis School,'' as much of
   the material was initially developed there. 
-\item Prof. Rappoccio currently oversees the research and education of {\bf Joshua
-    Kaisen} and {\bf Maral Alyari} as graduate students in his
-  group. Mr. Kaisen is working on upgrading the particle-flow
-  algorithm to work in the upgraded CMS detector. {\bf Ms. Alyari}
-  will be working on data-quality monitoring of the particle-flow and
-  jet-reconstruction algorithms.
+\item Prof. Rappoccio currently oversees the research and education of
+  three graduate students in his research group. One works on the
+  currently proposed research project, and the other two are working
+  the CMS experiment. 
 \item Previously, at JHU, Prof. Rappoccio also oversaw the graduate studies of 
   {\bf Guofan Hu, Marc Osherson, Kevin Nash, and Yongjie Xin} who are
   working on searches for BSM physics using boosted jet
   algorithms. Dr. Hu graduated recently and moved to a position in
   finance, while Mr. Osherson, Mr. Nash, and Mr. Xin are continuing
   their studies, still partially under his supervision. 
-\item Prior to the monitoring of the activities of {\bf Brendan Smith} and 
+\item Prior to the monitoring of the activities of 
   {\bf Jonathan Goodrum}, at JHU Prof. Rappoccio monitored the activities of two
   undergraduate students, 
   {\bf David Bjergaard} and {\bf Prateek Bajaj}. Mr. Bjergaard is now

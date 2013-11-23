@@ -1,4 +1,5 @@
-\documentclass[12pt]{article}
+\documentclass[times,11pt]{article}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
 \usepackage[usenames]{color} %used for font color
 \usepackage{amssymb} %maths
 \usepackage{amsmath} %maths
@@ -25,20 +26,15 @@
 \begin{document}
 
 
-
-\title{Clustering Jets at the Exascale}
-
-% >> Authors
-\author{Steven Ko, Salvatore Rappoccio, Lukasz Ziarek}
-
-% >> Date
-\date{\today}
+\begin{center}
+\large{Clustering Jets at the Exascale}\\
+Steven Ko, Salvatore Rappoccio, Lukasz Ziarek
+\end{center}
 
 
-\abstract{
+
 
 {\bf Overview :}
-
 In the past, particle physics has relied upon 
 improvements in processing speed of single computing cores
 in order to improve data acquisition rates. This feature will be
@@ -63,7 +59,6 @@ object.
 
 \bigskip
 {\bf Intellectual Merit :}
-
 This proposal focuses on parallelizing the existing jet clustering
 algorithms in use at the LHC experiments. The proposed improvements
 will be to use this as a test case for deployment of cutting-edge
@@ -74,7 +69,6 @@ the jet clustering is amenable to such improvements.
 
 \bigskip
 {\bf Broader Impacts :}
-
 The benefits of this proposal are twofold : firstly, there will be an
 immediate improvement of the jet clustering algorithms themselves that
 will lead to higher data acquisition rates at the LHC. Secondly, the
@@ -89,11 +83,7 @@ In addition, these core developments can train students in the newest
 computing techniques, giving them cutting-edge experience that is
 highly relevant in academia and private industry. 
 
-}
-
-
-
-\maketitle
+\newpage
 
 \section{Introduction}
 
@@ -129,7 +119,7 @@ speed and throughput) to reach the goals.
 
 
 One of the major technical challenges that lies ahead in
-exascale-level computng for these high-luminosity colliders is the
+exascale-level computing for these high-luminosity colliders is the
 continuation of the scaling of computational power year by year, known
 colloquially as ``Moore's Law''. 
 To set the scale, at the CMS experiment
@@ -140,7 +130,7 @@ seconds per event. However, as the luminosity is
 increased, the computational time currently scales
 quadratically. The luminosity at the HL-LHC is expected to reach as
 high as $>1\instlumiB$, which would correspond (naively) to enormous
-processing times, of order of many minutes to several
+processing times, on the order of many minutes to several
 hours per event! Clearly, it is necessary for the
 computing power to scale in order to compensate for this dramatic
 increase in CPU time with increasing luminosity. 
@@ -166,9 +156,9 @@ final-state particles produced in collisions into groups called
 interactions of quarks and gluons that hadronize. 
 These ``jet clustering'' algorithms group the particles into jets
 based on nearest-neighbor clustering (NN). 
-This algorithm can become very computationally expensive as the number
+This algorithm can become computationally expensive as the number
 of particles that are produced in a collision grows, scaling as
-$N^2\log{N}$ or $N\log{N}$. Techniques such as speculative computing,
+$N^2\log{N}$ or $N\log{N}$. Techniques that leverage and combine speculative computing,
 lightweight concurrency, and smarter distribution can strongly impact
 these types of NN algorithms~\cite{knn_gpu_1,knn_gpu_2,knn_gpu_3,knn-mapreduce-0,knn-mapreduce-1}. 
 Thus, this research will serve as a real-world test case

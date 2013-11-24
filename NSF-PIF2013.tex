@@ -148,7 +148,7 @@ processing capability~\cite{GAMEOVER} can adversely affect the
 long-term processing capability for particle physics
 experiments. Without improvements in single-core computational speed,
 the only avenues left are algorithmic improvements, and
-parallellization. Algorithm development is being undertaken at the LHC
+parallelization. Algorithm development is being undertaken at the LHC
 experiments to
 reduce the computational time of the software for data acquisition and
 reconstruction, using both single-core and multi-core
@@ -207,7 +207,7 @@ extending LHC computing to the exascale.
 %\bigskip
 
 Salvatore Rappoccio (tenure-track Assistant Professor) joined the
-Faculty at the Univers at Buffalo, SUNY (UB) in 2012. He has 15
+Faculty at the University at Buffalo, SUNY (UB) in 2012. He has 15
 years of experience programming in a
 high-energy physics environment, as well as other numerical software
 design for the private sector.
@@ -327,13 +327,13 @@ the results of other computations. Since the creation of threads and associated
 schedule and synchronization costs are typically prohibitive, we will explore new
 threading models that allow for logically-distinct computations to execute within
 a given construct. The PIs previous research has indicated that such schemes can profitably
-boost overall performance in the context of ML ( {\bf From Sal : Define this!} )code~\cite{acml, parasites}. 
-%The salient research
-%challenges in applying this strategy are as follows:  1) identifying what computation can be executed
-%safely during high latency operations at compile time, 2) providing a lightweight threading runtime
-%and programming model in the context of an imperative language, 
-%3) specializing the approach to numeric kernels,
-%and 4) building support for computation in a distributed setting.
+boost overall performance in the context of ML code~\cite{acml, parasites}. 
+The salient research
+challenges in applying this strategy are as follows:  1) identifying what computation can be executed
+safely during high latency operations at compile time, 2) providing a lightweight threading runtime
+and programming model in the context of an imperative language, 
+3) specializing the approach to numeric kernels,
+and 4) building support for computation in a distributed setting.
 
 \bigskip
 \noindent
@@ -348,22 +348,22 @@ incorrect ({\em i.e.} a ``datarace'' is detected, the computation cannot be seri
 incorrect computation is re-executed in a non-speculative manner.  If the rate of mis-speculation
 is low, such techniques can be leveraged to extract additional
 parallelism. 
-%There have been many different
-%proposals, including large efforts on transactional memory~\cite{},
-%lock elision~\cite{}, thread level speculation and speculative
-%multithreading~\cite{},
-% for integrating speculative computation into programming languages
-% and their associated runtimes~\cite{}.
+There have been many different
+proposals, including large efforts on transactional memory~\cite{},
+lock elision~\cite{}, thread level speculation and speculative
+multithreading~\cite{},
+ for integrating speculative computation into programming languages
+ and their associated runtimes~\cite{}.
 The PIs have extensive experience with transactional memory~\cite{trans}, lightweight rollback methods~\cite{stab}, 
 leveraging memoization to reduce re-computation costs~\cite{memo1, memo2},
 and deterministic speculation~\cite{iso}. We propose to explore a specialized speculation framework leveraging different
 speculation strategies, including speculation extracted by the programmer via programming language primitives,
 library level speculation, and compiler extracted speculation.
-%The salient research
-%challenges in applying this strategy are as follows:  1) identification the appropriate speculation model and
-%discovering speculation points at compile time, 2) providing a speculative runtime specialized for jet clustering
-%and capable of realizing user, library, and compiler injected speculation, and 3) exploring new and specialized
-%lightweight validation and re-execution mechanisms, including validation across multiple speculation strategies.
+The salient research
+challenges in applying this strategy are as follows:  1) identification the appropriate speculation model and
+discovering speculation points at compile time, 2) providing a speculative runtime specialized for jet clustering
+and capable of realizing user, library, and compiler injected speculation, and 3) exploring new and specialized
+lightweight validation and re-execution mechanisms, including validation across multiple speculation strategies.
 
 
 
@@ -415,7 +415,7 @@ at UB.
 
 \section{Broader impacts}
 
-The broader impacts of this reasearch are many fold. The jet-clustering
+The broader impacts of this research are many fold. The jet-clustering
 algorithm is very similar to the ``kNN'' algorithm, which is widely
 applicable throughout research and industry. The improvements that are
 developed here at the cutting edge of scientific inquiry will possibly be
@@ -423,10 +423,10 @@ adaptable to other real-life applications.
 
 In addition to the core physics developments enabled by improved
 scalability of the {\tt fastjet} software environment, this award will
-also serve as a validaton mechanism for core computer science
+also serve as a validation mechanism for core computer science
 research in programming languages and distributed systems.  The development
 of the system will require core systems research in expanding and applying
-the technological advances made preivously by the PIs.
+the technological advances made previously by the PIs.
 
 
 
@@ -769,4 +769,12 @@ worldwide~\footnote{http://fastjet.fr}.
 % LocalWords:  Collider exascale transformative CMS multicore VMs bla
 % LocalWords:  luminosities HEP HTC HPC hadrons hadronic fastjet NN
 % LocalWords:  Ref kNN Refs knn gpu factorized workflow MapReduce mis
-% LocalWords:  datarace multithreading runtimes memoization
+% LocalWords:  datarace multithreading runtimes memoization HL Higgs
+% LocalWords:  colliders petascale hadronically SM bosons QCD quarks
+% LocalWords:  chromodynamic gluons hadronize mapreduce SUNY UB CERN
+% LocalWords:  co QuarkNet HiggsFest Higgsfest Feynman scintillator
+% LocalWords:  tupperware Babeville Goodrum CSTEP Facilitator IL NY
+% LocalWords:  Fermilab Oct UEC Delmar collider Duckon Naperville Jun
+% LocalWords:  CH JHU oversaw Guofan Hu Marc Osherson Yongjie Xin BSM
+% LocalWords:  Bjergaard Prateek Bajaj PIF USD Profs CCR Postdoc
+% LocalWords:  Milner

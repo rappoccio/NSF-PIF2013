@@ -5,7 +5,7 @@
 \usepackage{amsmath} %maths
 \usepackage{graphicx}
 \usepackage{hyperref}
-
+\usepackage{xspace}
 
 \newcommand{\GeV}{\ensuremath{\mathrm{GeV}}}
 \newcommand{\TeV}{\ensuremath{\mathrm{TeV}}}
@@ -309,6 +309,70 @@ implemented in a common software framework called
 {\tt fastjet}~\cite{fastjet_manual}. 
 The mathematical problem is analogous to the
 ``K-nearest neighbors algorithm''~\cite{knn_ieee} (kNN). 
+
+
+The specific jet-clustering algorithms that have become enormously
+popular in the particle physics community are based on sequential
+clustering, similar to nearest-neighbor
+clustering~\cite{fastjet_timing}. In these sequential-clustering
+algorithms, a list of the four-momentum of particles are input. 
+These algorithms combine four-vectors of input pairs of particles 
+until certain criteria are satisfied and jets are formed. 
+For the jet algorithms considered in this paper, for each pair of particles $i$ and $j$,
+a ``distance'' metric between
+the two particles ($d_{ij}$), and the so-called ``beam distance''
+for each particle ($d_{iB}$), are computed:
+
+
+
+\begin{eqnarray}
+\label{eq:dij}
+d_{ij} &=& \mathrm{min}({\pt}_i^{2n},{\pt}_j^{2n}) \Delta R_{ij}^2 / R^2 \\
+\label{eq:diB}
+d_{iB} &=& {\pt}_i^{2n}, 
+\end{eqnarray}
+
+where ${\pt}_i$ and ${\pt}_j$ are the transverse momenta of particles
+$i$ and $j$, respectively, ``min'' refers
+to the lesser of the two $\pt$ values, 
+the integer $n$ depends on the specific jet algorithm, $\Delta R_{ij} = \sqrt{(\Delta y_{ij})^2 + (\Delta\phi_{ij})^2 }$
+is the distance between $i$ and $j$ in
+rapidity ($y = \frac{1}{2} \ln (E + p_{z})/(E - p_{z})$) and azimuth ($\phi$),
+and $R$ is the ``size'' parameter of order unity~\cite{ktalg}, with all angles expressed in radians. 
+The particle pair $(i,j)$ with smallest $d_{ij}$ is combined into a
+single object. All distances are recalculated using the new object, and the procedure is
+repeated until, for a given object $i$, all the $d_{ij}$ are greater
+than $d_{iB}$. Object $i$ is then
+classified as a jet and not considered further in the algorithm. The process is
+repeated until all input particles are clustered into jets. 
+
+
+The value for $n$ in Eqs.~(\ref{eq:dij}) and~(\ref{eq:diB}) governs
+the topological properties of the jets. 
+For $n=1$ the procedure is referred to as the
+$k_{\mathrm{T}}$ algorithm (KT). The KT jets tend to have irregular
+shapes and are especially useful for reconstructing jets of lower momentum~\cite{ktalg}.
+%For this reason, they are also sensitive to the presence of 
+%low-$\pt$ pileup (PU) contributions, and are  
+%used to compute the median $\pt$ per unit area (in $(y,\phi)$) of an
+%event~\cite{jetarea_fastjet}. 
+For $n=-1$, the procedure
+is called the anti-$k_{\mathrm{T}}$ (AK) algorithm, with features
+close to an idealized cone algorithm. 
+%% when the input particles have
+%% negligible mass, in which case the rapidity $y$ is approximated by the
+%% pseudorapidity $\eta$. 
+The AK algorithm is used extensively
+in LHC experiments and by the theoretical community for
+finding well-separated jets~\cite{ktalg}. For $n=0$, the procedure
+is called the Cambridge--Aachen (CA) algorithm. This relies only on angular
+information, and, like the $k_\mathrm{T}$ algorithm,
+provides irregularly-shaped jets in $(y,\phi)$. The CA algorithm is useful in identifying
+jet substructure~\cite{CAcambridge,CAaachen}.
+
+
+
+
 The single-core optimization of
 jet clustering
 is outlined in Ref.~\cite{fastjet_timing}. In a single core,
@@ -319,10 +383,12 @@ drastically increase over existing machines, it will be critical to
 develop parallelization strategies to maintain scalability of the jet
 clustering algorithms that exist to future machines. 
 
-
+Since the particles are clustered pairwise, there are numerous
+opportunities to separately compute portions of the event and then
+combine them at later stages. 
 We now
 discuss specific strategies that can be developed 
-to optimize performance in this algorithm. 
+to optimize concurrent performance in this algorithm. 
 
 
 \iffalse
@@ -442,7 +508,6 @@ factors of 2-3 by moving to concurrent processing with 8 cores, with
 no increase in memory cost. By further deploying the advanced
 strategies described above, this factor of 2-3 improvement is expected
 to grow significantly. 
-
 These preliminary studies were performed by Rappoccio and Mr.
 Goodrum (undergrad student) over the summer of 2013. Having a
 postdoctoral fellow to work on this project will greatly increase the
@@ -459,6 +524,14 @@ implementation and study of these algorithms in the real-world
 {\tt fastjet} software environment, testing the improvements at the
 extensive cluster at the {\bf Center for Computational Research} here
 at UB. 
+
+During the first year, it is expected that naive improvements using
+established techniques could be deployed into the {\tt fastjet}
+package. Deployment of the improvements achieved by Mr. Goodrum and
+Rappoccio should take several months to a year of full deployment
+time. 
+
+In the meantime, ( {\bf timeline from CS improvements goes here.} )
 
 \section{Broader impacts}
 
@@ -631,7 +704,7 @@ program.
 \bigskip
 
 
-The requested funds of \$915,569 USD (for 3 years starting in 2014)
+The requested funds of \$951,102 USD (for 3 years starting in 2014)
 would cover two (2) months of summer salary for Profs. Rappoccio,
 Ziarek and Ko per
 year for three (3) years
@@ -639,7 +712,8 @@ year for three (3) years
 one (1) postdoctoral fellow for three (3)
 years (\$154,224), and salary plus
 tuition for two (2) graduate students, totaling \$91,812 in
-salary and \$33,432 in tuition. 
+salary and \$33,432 in tuition. This will also cover \$22,300 of
+computer fees. 
 
 If awarded, efforts for Profs. Rappoccio, Ziarek and Ko will be
 reduced to be in compliance with NSF 2 month policy. 
@@ -660,7 +734,8 @@ http://www.research.buffalo.edu/sps/about/rates.cfm.
 
 This research will require regular travel to conferences and
 CERN. Hence, the proposal requests
-\$12,486 in travel funds for the three years of activity. 
+\$12,486 in domestic travel funds and \$12,486 in foreign travel funds
+for the three years of activity. 
 
 \bigskip
 {\bf Facilities and Administration Indirect Costs}
@@ -747,11 +822,28 @@ of peers in both professional and social settings.
 \renewcommand{\thepage} {E--\arabic{page}}
 \noindent{\Large \bf Data Management Plan }
 
+The data that are produced from this proposal will be in the form of
+software algorithms and procedures. The format and content will be as
+source files. 
+
 The algorithms that are developed with this research plan will be
 integrated into the main {\tt fastjet} software framework for
 distribution among collaborators (both experimental and theoretical)
-worldwide~\footnote{http://fastjet.fr}. 
+worldwide~\footnote{http://fastjet.fr}. This software is open-source,
+freely available, and continually maintained by the {\tt fastjet}
+maintenance team under the GNU Public License V2~\cite{gnupl}. 
+The web pages related to this project are stored on
+machines at the ``Laboratoire de Physique Théorique et Hautes Energies'' 
+\url{http://www.lpthe.jussieu.fr/spip/?lang=en}. 
 
+The {\tt fastjet} team has indicated their willingness to integrate
+improvements into the main {\tt fastjet} package. 
+
+
+Should authors use the {\tt fastjet} package (including possible
+improvements as a result of this grant), they should
+cite~\cite{fastjet_timing,fastjet_manual} and any publications that
+follow from the proposed research. 
 
 
 

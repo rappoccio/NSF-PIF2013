@@ -429,7 +429,7 @@ Unfortunately, it is very difficult to parallelize this computation profitably a
 the overhead of thread creation, scheduling, synchronization, and migration outweigh
 the gains in parallelism. Instead of extracting explicit parallelism from such
 computations, we propose to explore methods of lightweight asynchrony to allow for
-computation to proceed while waiting on high latency I/O operations to complete or
+computation to proceed while waiting on high latency I/O operations to complete or on
 the results of other computations. Since the creation of threads and associated
 schedule and synchronization costs are typically prohibitive, we will explore new
 threading models that allow for logically-distinct computations to execute within
@@ -456,11 +456,11 @@ incorrect computation is re-executed in a non-speculative manner.  If the rate o
 is low, such techniques can be leveraged to extract additional
 parallelism. 
 There have been many different
-proposals, including large efforts on transactional memory~\cite{},
-lock elision~\cite{}, thread level speculation and speculative
-multithreading~\cite{},
+proposals, including large efforts on transactional memory~\cite{Gramoli:2012:TCS:2168836.2168872,Bocchino:2008:STM:1345206.1345242,Adl-Tabatabai:2006:CRS:1133981.1133985,Usui:2010:ALC:1850844.1850945},
+lock elision~\cite{Roy:2009:RSS:1519065.1519094}, thread level speculation and speculative
+multithreading~\cite{Barreto:2012:UTS:2442626.2442639,Johnson:2004:MPD:996841.996851},
  for integrating speculative computation into programming languages
- and their associated runtimes~\cite{}.
+ and their associated runtimes.
 The PIs have extensive experience with transactional memory~\cite{trans}, lightweight rollback methods~\cite{stab}, 
 leveraging memoization to reduce re-computation costs~\cite{memo1, memo2},
 and deterministic speculation~\cite{iso}. We propose to explore a specialized speculation framework leveraging different

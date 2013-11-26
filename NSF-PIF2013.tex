@@ -316,9 +316,10 @@ popular in the particle physics community are based on sequential
 clustering, similar to nearest-neighbor
 clustering~\cite{fastjet_timing}. In these sequential-clustering
 algorithms, a list of the four-momentum of particles are input. 
-These algorithms combine four-vectors of input pairs of particles 
-until certain criteria are satisfied and jets are formed. 
-For the jet algorithms considered in this paper, for each pair of particles $i$ and $j$,
+These algorithms combine the input four-vectors pairwise
+until certain criteria are satisfied, defining the resultant
+combination as a jet. 
+For the jet algorithms considered in this proposal, for each pair of particles $i$ and $j$,
 a ``distance'' metric between
 the two particles ($d_{ij}$), and the so-called ``beam distance''
 for each particle ($d_{iB}$), are computed:
@@ -432,7 +433,7 @@ computation to proceed while waiting on high latency I/O operations to complete 
 the results of other computations. Since the creation of threads and associated
 schedule and synchronization costs are typically prohibitive, we will explore new
 threading models that allow for logically-distinct computations to execute within
-a given construct. The PIs previous research has indicated that such schemes can profitably
+a given construct. Co-PI Ziarek's previous research has indicated that such schemes can profitably
 boost overall performance in the context of ML code~\cite{acml, parasites}. 
 The salient research
 challenges in applying this strategy are as follows:  1) identifying what computation can be executed
@@ -466,7 +467,8 @@ and deterministic speculation~\cite{iso}. We propose to explore a specialized sp
 speculation strategies, including speculation extracted by the programmer via programming language primitives,
 library level speculation, and compiler extracted speculation.
 The salient research
-challenges in applying this strategy are as follows:  1) identification the appropriate speculation model and
+challenges in applying this strategy are as follows:  1)
+identification of the appropriate speculation model and
 discovering speculation points at compile time, 2) providing a speculative runtime specialized for jet clustering
 and capable of realizing user, library, and compiler injected speculation, and 3) exploring new and specialized
 lightweight validation and re-execution mechanisms, including validation across multiple speculation strategies.
@@ -500,10 +502,10 @@ question in the context of jet clustering for the LHC.
 
 
 
-\subsection{Research Plan}
+\subsection{Research Strategy}
 
 Preliminary studies of naive parallelization of a few specific
-algorithms in the {\tt fastjet} package reduced processing times by
+routines in the {\tt fastjet} package reduced processing times by
 factors of 2-3 by moving to concurrent processing with 8 cores, with
 no increase in memory cost. By further deploying the advanced
 strategies described above, this factor of 2-3 improvement is expected
@@ -529,17 +531,34 @@ During the first year, it is expected that naive improvements using
 established techniques could be deployed into the {\tt fastjet}
 package. Deployment of the improvements achieved by Mr. Goodrum and
 Rappoccio should take several months to a year of full deployment
-time. 
+time. This will serve as a baseline for the advanced algorithmic
+improvements that will be in research and development simultaneously. 
 
-In the meantime, ( {\bf timeline from CS improvements goes here.} )
+The postdoctoral fellow, under the tutelage of Profs. Ziarek, Ko, and
+Rappoccio, will use this baseline to investigate the
+impacts of speculative computing and lightweight concurrency. 
+During the first year, it is expected that {\bf bla bla bla} will be
+done and {\bf bla bla bla}. The two graduate students will be expected
+to contribute to this effort by {\bf bla bla bla}. In the end, a
+factor of {\bf eight point three gazillion} improvement is expected. 
+
+Orthogonally, the distribution model for these computations (be they
+simple multithreading of existing techniques or the advanced
+algorithmic development described above) will then be analyzed. The
+{\tt MapReduce} execution framework depends on {\bf bla bla bla} and
+is estimated to make improvements of order {\bf six point two
+  bajillion}. 
 
 \section{Broader impacts}
 
-The broader impacts of this research are many fold. The jet-clustering
+The broader impacts of this research are manyfold. The jet-clustering
 algorithm is very similar to the ``kNN'' algorithm, which is widely
 applicable throughout research and industry. The improvements that are
 developed here at the cutting edge of scientific inquiry will possibly be
-adaptable to other real-life applications. 
+adaptable to other real-life applications. Examples of applications
+outside of particle physics would be statistical
+software~\cite{statsoft}, real-time 3-d rendering of computer
+graphics~\cite{opengl}, and feature extraction~\cite{featureextract}. 
 
 In addition to the core physics developments enabled by improved
 scalability of the {\tt fastjet} software environment, this award will
